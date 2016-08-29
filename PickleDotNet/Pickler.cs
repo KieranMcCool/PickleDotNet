@@ -17,13 +17,15 @@ namespace PickleDotNet
             file.Close();
         }
 
-        public void Load(String path)
+        public E Load(String path)
         {
             System.Xml.Serialization.XmlSerializer reader =
                 new System.Xml.Serialization.XmlSerializer(typeof(E));
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             E output = (E)reader.Deserialize(file);
             file.Close();
+
+            return output;
         }
     }
 }
